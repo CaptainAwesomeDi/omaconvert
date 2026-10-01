@@ -24,12 +24,16 @@ int main(int argc, char *argv[]) {
 
     // --screenshot=<path> renders the face at the design size into a PNG
     // and exits; the QML side skips geometry restore so the frame is the
-    // canonical first-run state.
+    // canonical first-run state. --open=<category|units-from|units-to>
+    // lifts a picker into the frame before the grab.
     QString screenshotPath;
+    QString screenshotOpen;
     const QStringList arguments = app.arguments();
     for (const QString &argument : arguments) {
         if (argument.startsWith(QStringLiteral("--screenshot=")))
             screenshotPath = argument.mid(QStringLiteral("--screenshot=").size());
+        else if (argument.startsWith(QStringLiteral("--open=")))
+            screenshotOpen = argument.mid(QStringLiteral("--open=").size());
     }
 
     QFontDatabase::addApplicationFont(QStringLiteral(":/fonts/iAWriterMonoS-Regular.ttf"));
@@ -76,6 +80,8 @@ int main(int argc, char *argv[]) {
     engine.rootContext()->setContextProperty(QStringLiteral("theme"), &theme);
     engine.rootContext()->setContextProperty(QStringLiteral("screenshotPath"),
                                              screenshotPath);
+    engine.rootContext()->setContextProperty(QStringLiteral("screenshotOpen"),
+                                             screenshotOpen);
 
     engine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
     if (engine.rootObjects().isEmpty()) {

@@ -426,6 +426,12 @@ ApplicationWindow {
         if (screenshotPath !== "") {
             width = 400;
             height = 568;
+            if (screenshotOpen === "category")
+                openCategoryPicker();
+            else if (screenshotOpen === "units-from")
+                openUnitPicker("from");
+            else if (screenshotOpen === "units-to")
+                openUnitPicker("to");
         } else {
             var geometry = backend.windowGeometry();
             if (geometry.valid) {

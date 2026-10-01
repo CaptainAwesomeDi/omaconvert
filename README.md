@@ -3,7 +3,14 @@
 A dead-simple unit converter built with Qt Quick and C++ that automatically
 follows the Omarchy theme and system dark/light mode — Omacalc's sibling.
 
-<img width="800" alt="Omaconvert with the Rosé Pine Dawn theme" src="screenshots/omaconvert.png" />
+<p>
+  <img width="400" alt="Omaconvert with the Rosé Pine Dawn theme" src="screenshots/omaconvert.png" />
+  <img width="400" alt="Omaconvert with a dark theme" src="screenshots/omaconvert-dark.png" />
+</p>
+
+| Picking a category | Picking a unit |
+|---|---|
+| <img width="400" alt="Category picker" src="screenshots/omaconvert-categories.png" /> | <img width="400" alt="Unit picker" src="screenshots/omaconvert-units.png" /> |
 
 ## Install
 
