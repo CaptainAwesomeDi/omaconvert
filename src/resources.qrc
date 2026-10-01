@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="Main.qml">Main.qml</file>
+        <file alias="ConvertButton.qml">ConvertButton.qml</file>
+        <file alias="ValueRow.qml">ValueRow.qml</file>
+        <file alias="CategoryHeader.qml">CategoryHeader.qml</file>
+        <file alias="UnitPicker.qml">UnitPicker.qml</file>
+        <file alias="fonts/iAWriterMonoS-Regular.ttf">../fonts/iAWriterMonoS-Regular.ttf</file>
+        <file alias="fonts/iAWriterMonoS-Bold.ttf">../fonts/iAWriterMonoS-Bold.ttf</file>
+        <file alias="i18n/omaconvert.de.json">../i18n/omaconvert.de.json</file>
+        <file alias="i18n/omaconvert.es.json">../i18n/omaconvert.es.json</file>
+        <file alias="i18n/omaconvert.fr.json">../i18n/omaconvert.fr.json</file>
+        <file alias="i18n/omaconvert.it.json">../i18n/omaconvert.it.json</file>
+        <file alias="i18n/omaconvert.ja.json">../i18n/omaconvert.ja.json</file>
+        <file alias="i18n/omaconvert.zh_CN.json">../i18n/omaconvert.zh_CN.json</file>
+    </qresource>
+</RCC>

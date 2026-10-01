@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Omaconvert
+GenericName=Unit converter
+Comment=Dead-simple unit converter
+Exec=omaconvert
+Icon=omaconvert
+Terminal=false
+Categories=Utility;Calculator;
+Keywords=converter;convert;units;weight;length;temperature;volume;data;
+StartupWMClass=omaconvert

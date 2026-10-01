@@ -1,0 +1,12 @@
+/build/
+/build-tests/
+
+# Local working notes: design council debates and review rounds.
+/council/
+
+*.o
+*.moc
+moc_*.cpp
+qrc_*.cpp
+.qmake.stash
+Makefile
