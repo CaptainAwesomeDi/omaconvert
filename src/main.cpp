@@ -6,6 +6,8 @@
 #include <QQmlContext>
 #include <QQmlError>
 #include <QQuickStyle>
+#include <QQuickWindow>
+#include <QTimer>
 #include <QUrl>
 #include <QWindow>
 #include <QFile>
@@ -19,6 +21,16 @@ int main(int argc, char *argv[]) {
     app.setApplicationName(QStringLiteral("omaconvert"));
     app.setDesktopFileName(QStringLiteral("omaconvert"));
     app.setWindowIcon(QIcon::fromTheme(QStringLiteral("omaconvert")));
+
+    // --screenshot=<path> renders the face at the design size into a PNG
+    // and exits; the QML side skips geometry restore so the frame is the
+    // canonical first-run state.
+    QString screenshotPath;
+    const QStringList arguments = app.arguments();
+    for (const QString &argument : arguments) {
+        if (argument.startsWith(QStringLiteral("--screenshot=")))
+            screenshotPath = argument.mid(QStringLiteral("--screenshot=").size());
+    }
 
     QFontDatabase::addApplicationFont(QStringLiteral(":/fonts/iAWriterMonoS-Regular.ttf"));
     QFontDatabase::addApplicationFont(QStringLiteral(":/fonts/iAWriterMonoS-Bold.ttf"));
@@ -62,12 +74,24 @@ int main(int argc, char *argv[]) {
     });
     engine.rootContext()->setContextProperty(QStringLiteral("backend"), &backend);
     engine.rootContext()->setContextProperty(QStringLiteral("theme"), &theme);
+    engine.rootContext()->setContextProperty(QStringLiteral("screenshotPath"),
+                                             screenshotPath);
 
     engine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
     if (engine.rootObjects().isEmpty()) {
         qCritical() << "Could not load the Omaconvert interface; resource available:"
                     << QFile::exists(QStringLiteral(":/Main.qml"));
         return -1;
+    }
+
+    if (!screenshotPath.isEmpty()) {
+        auto *window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
+        QTimer::singleShot(300, window, [window, screenshotPath]() {
+            const QImage frame = window->grabWindow();
+            if (frame.isNull() || !frame.save(screenshotPath))
+                qCritical() << "Could not save the screenshot to" << screenshotPath;
+            QCoreApplication::quit();
+        });
     }
 
     return app.exec();

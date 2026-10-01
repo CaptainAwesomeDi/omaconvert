@@ -420,17 +420,25 @@ ApplicationWindow {
 
     Component.onCompleted: {
         appliedTextScale = backend.textScale;
-        var geometry = backend.windowGeometry();
-        if (geometry.valid) {
-            x = geometry.x;
-            y = geometry.y;
-            width = geometry.width;
-            height = geometry.height;
-            if (geometry.maximized) showMaximized();
+
+        // --screenshot renders the canonical first-run face at design size;
+        // interactive launches restore the remembered geometry instead.
+        if (screenshotPath !== "") {
+            width = 400;
+            height = 568;
         } else {
-            // First run: open at the design size, grown by the desktop text scale.
-            width = Math.round(400 * backend.textScale);
-            height = Math.round(568 * backend.textScale);
+            var geometry = backend.windowGeometry();
+            if (geometry.valid) {
+                x = geometry.x;
+                y = geometry.y;
+                width = geometry.width;
+                height = geometry.height;
+                if (geometry.maximized) showMaximized();
+            } else {
+                // First run: open at the design size, grown by the desktop text scale.
+                width = Math.round(400 * backend.textScale);
+                height = Math.round(568 * backend.textScale);
+            }
         }
 
         // Headless smoke: --smoke opens both pickers and reports their state.
