@@ -18,9 +18,9 @@
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
-    app.setApplicationName(QStringLiteral("omaconvert"));
-    app.setDesktopFileName(QStringLiteral("omaconvert"));
-    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("omaconvert")));
+    app.setApplicationName(QStringLiteral("omaunits"));
+    app.setDesktopFileName(QStringLiteral("omaunits"));
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("omaunits")));
 
     // --screenshot=<path> renders the face at the design size into a PNG
     // and exits; the QML side skips geometry restore so the frame is the
@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
 
     engine.load(QUrl(QStringLiteral("qrc:/Main.qml")));
     if (engine.rootObjects().isEmpty()) {
-        qCritical() << "Could not load the Omaconvert interface; resource available:"
+        qCritical() << "Could not load the Omaunits interface; resource available:"
                     << QFile::exists(QStringLiteral(":/Main.qml"));
         return -1;
     }

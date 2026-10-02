@@ -9,7 +9,7 @@
 #include <QStringList>
 
 // Translations are JSON dictionaries embedded in the resources
-// (i18n/omaconvert.<language>.json); the source language is the English
+// (i18n/omaunits.<language>.json); the source language is the English
 // string itself. The classic .ts/.qm pipeline would add a qt6-tools build
 // dependency Omarchy does not ship, so the dictionaries keep i18n
 // toolchain-free — swapping in QTranslator later only touches this header.
@@ -35,7 +35,7 @@ inline QHash<QString, QString> &dictionary() {
                                      candidate.left(2) }) {
             if (name.isEmpty())
                 continue;
-            QFile file(QStringLiteral(":/i18n/omaconvert.") + name + QStringLiteral(".json"));
+            QFile file(QStringLiteral(":/i18n/omaunits.") + name + QStringLiteral(".json"));
             if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
                 continue;
             const QJsonObject json = QJsonDocument::fromJson(file.readAll()).object();

@@ -12,7 +12,7 @@ ApplicationWindow {
     minimumWidth: 300
     minimumHeight: 430
     visible: true
-    title: "Omaconvert"
+    title: "Omaunits"
 
     readonly property bool darkMode: theme.darkMode
     readonly property color pageColor: theme.background

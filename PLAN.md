@@ -1,4 +1,4 @@
-# Omaconvert — Implementation Plan
+# Omaunits — Implementation Plan
 
 Council-approved design (Claude Opus · Codex GPT-6.1-Sol xhigh · Grok 4.7;
 blind round → debate → tie-break, all members COMMITTED). Debate record in
@@ -14,7 +14,7 @@ blind round → debate → tie-break, all members COMMITTED). Debate record in
    the rate pipeline was the app's only network dependency; both went.
 2. **i18n scoped to the category picker.** Only category names and the
    picker's filter placeholder translate; unit symbols and names stay
-   universal/English. Dictionaries: `i18n/omaconvert.<lang>.json`.
+   universal/English. Dictionaries: `i18n/omaunits.<lang>.json`.
 3. **Visible seam swap button.** The council's keypad-only swap hid the
    converter's main action; a mouse-friendly swap button now rides the
    hairline between the two value rows (the inverted keypad key stays).
@@ -112,7 +112,7 @@ Qt 6 Quick + C++17, qmake, MIT, no dependencies beyond Qt (+ `network`).
   No API key; the only new Qt module is `network`.
 - **Bundled seed** in the qrc (`data/eurofxref-daily.xml`), refreshed by
   `bin/update-rates` before releases. **Cache:** the raw XML at
-  `QStandardPaths::CacheLocation` (`~/.cache/omaconvert/`), written with
+  `QStandardPaths::CacheLocation` (`~/.cache/omaunits/`), written with
   `QSaveFile` only after a successful parse; the file's mtime is the fetch
   time. Bundled, cached, and fetched bytes share one parser; the newest valid
   `<Cube time>` wins; date regressions are rejected.
@@ -147,7 +147,7 @@ struct Unit { QString id, symbol, name; QStringList aliases;
   async fetch, `ratesChanged`.
 - `src/backend.{h,cpp}` — the QML facade in Omacalc's shape: entry state,
   `pressKey`, swap, cycle, copy/paste, formatting, `QSettings` (org `Omacom`,
-  app `omaconvert` — cannot clobber omacalc), geometry, theme properties.
+  app `omaunits` — cannot clobber omacalc), geometry, theme properties.
 - `src/main.cpp` — Omacalc's font/portal wiring with names changed.
 - QML: `Main.qml` (window, theme mixing, uiScale, shortcuts, geometry),
   `ConvertButton.qml` (CalcButton + `primary` kind + canvas swap icon),
@@ -158,15 +158,15 @@ struct Unit { QString id, symbol, name; QStringList aliases;
   reads formatted output.
 
 ```
-omaconvert/
-├── LICENSE  README.md  omaconvert.pro
+omaunits/
+├── LICENSE  README.md  omaunits.pro
 ├── bin/update-rates
 ├── fonts/            (iA Writer Mono S Regular+Bold, OFL.txt — from omacalc)
 ├── data/eurofxref-daily.xml
 ├── src/              (main, backend, omarchytheme, systemtheme, unitcatalog,
 │                      rates, resources.qrc, Main/ConvertButton/ValueRow/
 │                      CategoryHeader/UnitPicker .qml)
-└── tests/            (tests.pro, tst_omaconvert.cpp)
+└── tests/            (tests.pro, tst_omaunits.cpp)
 ```
 
 ## Tests (QtTest, Omacalc's tst style: temp QSettings path, HOME override)

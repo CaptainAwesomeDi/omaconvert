@@ -1,22 +1,22 @@
-# Omaconvert
+# Omaunits
 
 A dead-simple unit converter built with Qt Quick and C++ that automatically
 follows the Omarchy theme and system dark/light mode — Omacalc's sibling.
 
 <p>
-  <img width="400" alt="Omaconvert with the Rosé Pine Dawn theme" src="screenshots/omaconvert.png" />
-  <img width="400" alt="Omaconvert with a dark theme" src="screenshots/omaconvert-dark.png" />
+  <img width="400" alt="Omaunits with the Rosé Pine Dawn theme" src="screenshots/omaunits.png" />
+  <img width="400" alt="Omaunits with a dark theme" src="screenshots/omaunits-dark.png" />
 </p>
 
 | Picking a category | Picking a unit |
 |---|---|
-| <img width="400" alt="Category picker" src="screenshots/omaconvert-categories.png" /> | <img width="400" alt="Unit picker" src="screenshots/omaconvert-units.png" /> |
+| <img width="400" alt="Category picker" src="screenshots/omaunits-categories.png" /> | <img width="400" alt="Unit picker" src="screenshots/omaunits-units.png" /> |
 
 ## Install
 
 Build from source with `bin/build` (requires `qt6-base` and
 `qt6-declarative`), or install via the Omarchy Package Repository with the
-`omaconvert` package.
+`omaunits` package.
 
 ## Usage
 
@@ -61,8 +61,8 @@ the theme changes. Text follows the desktop text size —
 - Qt 6: `qt6-base`, `qt6-declarative`
 - `xdg-desktop-portal` and a portal backend
 
-The app icon (`icons/omaconvert.svg`) and launcher entry
-(`packaging/omaconvert.desktop`) install into the hicolor icon theme and
+The app icon (`icons/omaunits.svg`) and launcher entry
+(`packaging/omaunits.desktop`) install into the hicolor icon theme and
 XDG applications directory when packaged; for a source checkout, copy them
 to `~/.local/share/icons/hicolor/scalable/apps/` and
 `~/.local/share/applications/`. The icon derives from omacalc's design.

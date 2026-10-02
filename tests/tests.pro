@@ -2,12 +2,12 @@ QT += core gui testlib
 
 CONFIG += testcase c++17
 TEMPLATE = app
-TARGET = tst_omaconvert
+TARGET = tst_omaunits
 
 INCLUDEPATH += ../src
 
 SOURCES += \
-    tst_omaconvert.cpp \
+    tst_omaunits.cpp \
     ../src/backend.cpp \
     ../src/omarchytheme.cpp
 

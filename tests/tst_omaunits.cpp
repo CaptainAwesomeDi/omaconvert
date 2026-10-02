@@ -20,7 +20,7 @@ void press(Backend &converter, const QString &keys) {
 }
 }  // namespace
 
-class OmaconvertTest : public QObject {
+class OmaunitsTest : public QObject {
     Q_OBJECT
 
 private slots:
@@ -29,8 +29,8 @@ private slots:
         QSettings::setDefaultFormat(QSettings::IniFormat);
         QSettings::setPath(QSettings::IniFormat, QSettings::UserScope,
                            m_settingsDirectory.path());
-        QCoreApplication::setApplicationName(QStringLiteral("omaconvert"));
-        QCoreApplication::setOrganizationName(QStringLiteral("omaconvert-test"));
+        QCoreApplication::setApplicationName(QStringLiteral("omaunits"));
+        QCoreApplication::setOrganizationName(QStringLiteral("omaunits-test"));
     }
 
     // Backends persist their category and pairs; wipe the slate between test
@@ -410,5 +410,5 @@ private:
     QTemporaryDir m_settingsDirectory;
 };
 
-QTEST_MAIN(OmaconvertTest)
-#include "tst_omaconvert.moc"
+QTEST_MAIN(OmaunitsTest)
+#include "tst_omaunits.moc"
